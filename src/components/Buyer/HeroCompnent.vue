@@ -9,7 +9,7 @@
                 <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
-                            <q-icon name="fa fa-bars"></q-icon>
+                            <q-icon name="menu"></q-icon>
                             <span>All departments</span>
                         </div>
                         <ul>
@@ -33,7 +33,7 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <q-icon name="fa fa-angle-down"></q-icon>
+                                    <q-icon name="expand_more"></q-icon>
                                 </div>
                                 <input type="text" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
-                                <q-icon name="fa fa-phone"></q-icon>
+                                <q-icon name="call"></q-icon>
                             </div>
                             <div class="hero__search__phone__text">
                                 <h5>+65 11.188.888</h5>

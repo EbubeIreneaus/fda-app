@@ -27,7 +27,7 @@
         </ul>
       </div>
       <div class="header__top__right__auth">
-        <a href="#"><q-icon name="fa fa-user"></q-icon> Login</a>
+        <a href="#"><q-icon name="account_circle"></q-icon> Login</a>
       </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -56,7 +56,7 @@
     </div>
     <div class="humberger__menu__contact">
       <ul>
-        <li><q-icon name="fa fa-envelope"></q-icon> hello@colorlib.com</li>
+        <li><q-icon name="mail"></q-icon> hello@colorlib.com</li>
         <li>Free Shipping for all Order of $99</li>
       </ul>
     </div>
@@ -70,7 +70,7 @@
           <div class="col-lg-6 col-md-6">
             <div class="header__top__left">
               <ul>
-                <li><q-icon name="fa fa-envelope" /> hello@colorlib.com</li>
+                <li><q-icon name="fa fa-mail" /> hello@colorlib.com</li>
                 <li>
                   Free Shipping for all Order of <span v-naira="10000"></span>
                 </li>
@@ -88,14 +88,14 @@
               <div class="header__top__right__language">
                 <img src="img/language.png" alt="" />
                 <div>English</div>
-                <q-icon name="fa fa-angle-down"></q-icon>
+                <q-icon name="expand_more"></q-icon>
                 <ul>
                   <li><a href="#">Spanis</a></li>
                   <li><a href="#">English</a></li>
                 </ul>
               </div>
               <div class="header__top__right__auth">
-                <a href="#"><q-icon name="fa fa-user"></q-icon> Login</a>
+                <a href="#"><q-icon name="account_circle"></q-icon> Login</a>
               </div>
             </div>
           </div>
@@ -130,11 +130,11 @@
           <div class="header__cart">
             <ul>
               <li>
-                <a href="#"><q-icon name="fa fa-heart"></q-icon> <span>1</span></a>
+                <a href="#"><q-icon name="favorite_border"></q-icon> <span>1</span></a>
               </li>
               <li>
                 <a href="#"
-                  ><q-icon name="fa fa-shopping-bag"></q-icon> <span>3</span></a
+                  ><q-icon name="shopping_bag"></q-icon> <span>3</span></a
                 >
               </li>
             </ul>
@@ -145,7 +145,7 @@
         </div>
       </div>
       <div class="humberger__open">
-        <q-icon name="fa fa-bars"></q-icon>
+        <q-icon name="menu"></q-icon>
       </div>
     </div>
   </header>
@@ -229,6 +229,8 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 defineOptions({
   name: 'MainLayout',
 });
@@ -240,4 +242,20 @@ const MenuLinks = [
   { title: 'BLOG', href: '/blog', icon: '', sublink: [] },
   { title: 'CONTACT', href: '/contact', icon: '', sublink: [] },
 ];
+
+onMounted(()=>{
+  // humbuger menu
+  document.querySelector('.humberger__open')?.addEventListener('click', ()=>{
+    document.querySelector('.humberger__menu__wrapper')?.classList.add('show__humberger__menu__wrapper');
+    document.querySelector('.humberger__menu__overlay')?.classList.add('active');
+    document.querySelector('body')?.classList.add('over_hid');
+  })
+
+  document.querySelector('.humberger__menu__overlay')?.addEventListener('click', ()=>{
+    document.querySelector('.humberger__menu__wrapper')?.classList.remove('show__humberger__menu__wrapper');
+    document.querySelector('.humberger__menu__overlay')?.classList.remove('active');
+    document.querySelector('body')?.classList.remove('over_hid');
+  })
+
+})
 </script>
