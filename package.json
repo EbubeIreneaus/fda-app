@@ -1,8 +1,8 @@
 {
-  "name": "fdm-app",
+  "name": "Raw Market",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "fdm-app",
+  "description": "Explore your uncooked world",
+  "productName": "Raw Market",
   "author": "Okigwe Ebube Ireneaus <alfredebube7@gmail.com>",
   "private": true,
   "scripts": {

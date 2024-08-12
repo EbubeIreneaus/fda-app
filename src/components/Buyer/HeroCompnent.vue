@@ -44,7 +44,7 @@
                                 <q-icon name="call"></q-icon>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>+234 806 198 2520</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>

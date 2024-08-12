@@ -3,7 +3,7 @@
   <div class="humberger__menu__overlay"></div>
   <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-      <a href="#"><q-img src="img/logo.png" alt="" /></a>
+      <a href="#"><img src="img/logo.png" alt="" style="height:50px; max-width:100px"/></a>
     </div>
     <div class="humberger__menu__cart">
       <ul>
@@ -14,7 +14,7 @@
           <a href="#"><q-icon name="fa fa-shopping-bag"></q-icon> <span>3</span></a>
         </li>
       </ul>
-      <div class="header__cart__price">item: <span>$150.00</span></div>
+      <div class="header__cart__price">item: <span v-naira="1500"></span></div>
     </div>
     <div class="humberger__menu__widget">
       <div class="header__top__right__language">
@@ -56,8 +56,8 @@
     </div>
     <div class="humberger__menu__contact">
       <ul>
-        <li><q-icon name="mail"></q-icon> hello@colorlib.com</li>
-        <li>Free Shipping for all Order of $99</li>
+        <li><q-icon name="mail"></q-icon>care@therawmarket.com.ng</li>
+        <li>Free Shipping for all Order of <span v-naira="10000"></span></li>
       </ul>
     </div>
   </div>
@@ -70,7 +70,7 @@
           <div class="col-lg-6 col-md-6">
             <div class="header__top__left">
               <ul>
-                <li><q-icon name="fa fa-mail" /> hello@colorlib.com</li>
+                <li><q-icon name="fa fa-mail" />care@therawmarket.com.ng</li>
                 <li>
                   Free Shipping for all Order of <span v-naira="10000"></span>
                 </li>
@@ -106,7 +106,7 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="header__logo">
-            <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+            <a href="./index.html"><img src="/img/logo.png" alt="" style="height:50px; max-width:100px" /></a>
           </div>
         </div>
         <div class="col-lg-6">
@@ -160,12 +160,12 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="footer__about">
             <div class="footer__about__logo">
-              <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+              <a href="./index.html"><img src="img/logo.png" alt="" style="max-height: 70px"/></a>
             </div>
             <ul>
-              <li>Address: 60-49 Road 11378 New York</li>
-              <li>Phone: +65 11.188.888</li>
-              <li>Email: hello@colorlib.com</li>
+              <li>Address: Bwari Abuja</li>
+              <li>Phone: +234 806 198 2520</li>
+              <li>Email: care@therawmarket.com.ng</li>
             </ul>
           </div>
         </div>
