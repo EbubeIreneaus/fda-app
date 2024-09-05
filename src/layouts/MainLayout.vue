@@ -119,7 +119,9 @@
 
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" side="left" bordered> </q-drawer>
+    <q-drawer v-model="leftDrawerOpen" side="left" bordered>
+      <SidebarComp :menu="MenuLinks" />
+    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -132,6 +134,7 @@
 </template>
 
 <script setup lang="ts">
+import SidebarComp from 'src/components/Buyer/SidebarComp.vue';
 import FooterComp from 'src/components/FooterComp.vue';
 import { ref } from 'vue';
 
