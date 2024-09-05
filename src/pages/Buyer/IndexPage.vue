@@ -9,217 +9,245 @@
 </style>
 
 <template>
-  <hero-compnent />
-  <div class="hero__item">
-    <div class="hero__text">
-      <span>FRUIT FRESH</span>
-      <h2>Vegetable <br />100% Organic</h2>
-      <p>Free Pickup and Delivery Available</p>
-      <a href="#" class="primary-btn">SHOP NOW</a>
-    </div>
-  </div>
-
-  <product-category-slide />
-
-  <!-- Featured Section Begin -->
-  <section class="featured spad">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-title">
-            <h2>Featured Product</h2>
-          </div>
-          <div class="featured__controls">
-            <ul>
-              <li class="active" data-filter="*">All</li>
-              <li data-filter=".oranges">Oranges</li>
-              <li data-filter=".fresh-meat">Fresh Meat</li>
-              <li data-filter=".vegetables">Vegetables</li>
-              <li data-filter=".fastfood">Fastfood</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="row featured__filter">
-        <single-product
-          :bgImg="product.img"
-          :name="product.name"
-          :price="product.price"
-          :class="product.class"
-          v-for="product in products"
-          :key="product.id"
-        />
+  <q-page class="tw-p-4 lg:tw-p-0">
+    <hero-compnent />
+    <div class="hero__item">
+      <div class="hero__text">
+        <span>FRUIT FRESH</span>
+        <h2>Vegetable <br />100% Organic</h2>
+        <p>Free Pickup and Delivery Available</p>
+        <a href="#" class="primary-btn">SHOP NOW</a>
       </div>
     </div>
-  </section>
-  <!-- Featured Section End -->
 
-  <!-- Banner Begin -->
-  <div class="banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <div class="banner__pic">
-            <q-img src="img/banner/banner-1.jpg" alt="" />
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <div class="banner__pic">
-            <q-img src="img/banner/banner-2.jpg" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Banner End -->
+    <product-category-slide />
 
-  <!-- Latest Product Section Begin -->
-  <section class="latest-product spad">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="latest-product__text">
-           <div class="row justify-between q-px-md">
-            <h4>Latest Products</h4>
-            <div>
-              <button @click="latest_slide_prev"><q-icon name="arrow_back_ios" /></button>
-              &nbsp;
-              <button @click="latest_slide_next"><q-icon name="arrow_forward_ios" /></button>
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+      <div class="container tw-mx-auto">
+        <div class="tw-flex tw-justify-center">
+          <div class="col-lg-12">
+            <div class="section-title">
+              <h2>Featured Product</h2>
             </div>
-           </div>
-            <swiper-container
-              :loop="true"
-              :autoplay="true"
-              slides-per-view="1"
-              :speed="1000"
-              class="latest-product__slider"
-              ref="latest_slide_ref"
-            >
-              <swiper-slide class="latest-prdouct__slider__item">
-                <mini-single-product
-                  v-for="product in products.slice(0, 4)"
-                  :key="product.id"
-                  :name="product.name"
-                  :price="product.price"
-                  :bgImg="product.img"
-                />
-              </swiper-slide>
-              <swiper-slide class="latest-prdouct__slider__item">
-                <mini-single-product
-                  v-for="product in products.slice(4, 8)"
-                  :key="product.id"
-                  :name="product.name"
-                  :price="product.price"
-                  :bgImg="product.img"
-                />
-              </swiper-slide>
-            </swiper-container>
           </div>
         </div>
+        <div
+          class="tw-grid lg:tw-grid-cols-4 sm:tw-grid-cols-2  tw-gap-4 tw-p-3 lg:tw-p-0"
+        >
+          <single-product
+            :bgImg="product.img"
+            :name="product.name"
+            :price="product.price"
+            :class="product.class"
+            v-for="product in products"
+            :key="product.id"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Featured Section End -->
 
-        <div class="col-lg-4 col-md-6">
-          <div class="latest-product__text">
+    <!-- Banner Begin -->
+    <div class="banner ">
+      <div class="container tw-mx-auto">
+        <div class="tw-grid md:tw-grid-cols-2 tw-gap-3">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="banner__pic">
+              <q-img src="img/banner/banner-1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="banner__pic">
+              <q-img src="img/banner/banner-2.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner End -->
+
+    <!-- Latest Product Section Begin -->
+    <section class="tw-mt-20">
+      <div class="container tw-mx-auto">
+        <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-2">
+          <div class="">
             <div class="latest-product__text">
-           <div class="row justify-between q-px-md">
-            <h4>Top Rated </h4>
-            <div>
-              <button @click="top_slide_prev"><q-icon name="arrow_back_ios" /></button>
-              &nbsp;
-              <button @click="top_slide_next"><q-icon name="arrow_forward_ios" /></button>
+              <div class="tw-flex tw-justify-between q-px-md">
+                <h4>Latest Products</h4>
+                <div>
+                  <q-btn
+                    icon="arrow_back_ios"
+                    dense
+                    unelevated
+                    size="sm"
+                    @click="latest_slide_prev"
+                  ></q-btn>
+                  &nbsp;
+                  <q-btn
+                    icon="arrow_forward_ios"
+                    dense
+                    unelevated
+                    size="sm"
+                    @click="latest_slide_next"
+                  ></q-btn>
+                </div>
+              </div>
+              <swiper-container
+                :loop="true"
+                :autoplay="true"
+                slides-per-view="1"
+                :speed="1000"
+                class=""
+                ref="latest_slide_ref"
+              >
+                <swiper-slide class="">
+                  <mini-single-product
+                    v-for="product in products.slice(0, 4)"
+                    :key="product.id"
+                    :name="product.name"
+                    :price="product.price"
+                    :bgImg="product.img"
+                  />
+                </swiper-slide>
+                <swiper-slide class="">
+                  <mini-single-product
+                    v-for="product in products.slice(4, 8)"
+                    :key="product.id"
+                    :name="product.name"
+                    :price="product.price"
+                    :bgImg="product.img"
+                  />
+                </swiper-slide>
+              </swiper-container>
             </div>
-           </div>
-            <swiper-container
-              :loop="true"
-              :autoplay="true"
-              slides-per-view="1"
-              :speed="1000"
-              class="latest-product__slider"
-              ref="top_slide_ref"
-            >
-              <swiper-slide class="latest-prdouct__slider__item">
-                <mini-single-product
-                  v-for="product in products.slice(0, 4)"
-                  :key="product.id"
-                  :name="product.name"
-                  :price="product.price"
-                  :bgImg="product.img"
-                />
-              </swiper-slide>
-              <swiper-slide class="latest-prdouct__slider__item">
-                <mini-single-product
-                  v-for="product in products.slice(4, 8)"
-                  :key="product.id"
-                  :name="product.name"
-                  :price="product.price"
-                  :bgImg="product.img"
-                />
-              </swiper-slide>
-            </swiper-container>
           </div>
-           
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="latest-product__text">
+
+          <div class="col-lg-4 col-md-6">
             <div class="latest-product__text">
-           <div class="row justify-between q-px-md">
-            <h4>Review Products</h4>
-            <div>
-              <button @click="review_slide_prev"><q-icon name="arrow_back_ios" /></button>
-              &nbsp;
-              <button @click="review_slide_next"><q-icon name="arrow_forward_ios" /></button>
+              <div class="latest-product__text">
+                <div class="row justify-between q-px-md">
+                  <h4>Top Rated</h4>
+                  <div>
+                    <q-btn
+                      icon="arrow_back_ios"
+                      dense
+                      unelevated
+                      size="sm"
+                      @click="top_slide_prev"
+                    ></q-btn>
+                    &nbsp;
+                    <q-btn
+                      icon="arrow_forward_ios"
+                      dense
+                      unelevated
+                      size="sm"
+                      @click="top_slide_next"
+                    ></q-btn>
+                  </div>
+                </div>
+                <swiper-container
+                  :loop="true"
+                  :autoplay="true"
+                  slides-per-view="1"
+                  :speed="1000"
+                  class="latest-product__slider"
+                  ref="top_slide_ref"
+                >
+                  <swiper-slide class="">
+                    <mini-single-product
+                      v-for="product in products.slice(0, 4)"
+                      :key="product.id"
+                      :name="product.name"
+                      :price="product.price"
+                      :bgImg="product.img"
+                    />
+                  </swiper-slide>
+                  <swiper-slide class="">
+                    <mini-single-product
+                      v-for="product in products.slice(4, 8)"
+                      :key="product.id"
+                      :name="product.name"
+                      :price="product.price"
+                      :bgImg="product.img"
+                    />
+                  </swiper-slide>
+                </swiper-container>
+              </div>
             </div>
-           </div>
-            <swiper-container
-              :loop="true"
-              :autoplay="true"
-              slides-per-view="1"
-              :speed="1000"
-              class="latest-product__slider"
-              ref="review_slide_ref"
-            >
-              <swiper-slide class="latest-prdouct__slider__item">
-                <mini-single-product
-                  v-for="product in products.slice(0, 4)"
-                  :key="product.id"
-                  :name="product.name"
-                  :price="product.price"
-                  :bgImg="product.img"
-                />
-              </swiper-slide>
-              <swiper-slide class="latest-prdouct__slider__item">
-                <mini-single-product
-                  v-for="product in products.slice(4, 8)"
-                  :key="product.id"
-                  :name="product.name"
-                  :price="product.price"
-                  :bgImg="product.img"
-                />
-              </swiper-slide>
-            </swiper-container>
           </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="latest-product__text">
+              <div class="latest-product__text">
+                <div class="row justify-between q-px-md">
+                  <h4>Review Products</h4>
+                  <div>
+                    <q-btn
+                      icon="arrow_back_ios"
+                      unelevated
+                      size="sm"
+                      dense
+                      @click="review_slide_prev"
+                    ></q-btn>
+                    &nbsp;
+                    <q-btn
+                      icon="arrow_forward_ios"
+                      unelevated
+                      size="sm"
+                      dense
+                      @click="review_slide_next"
+                    ></q-btn>
+                  </div>
+                </div>
+                <swiper-container
+                  :loop="true"
+                  :autoplay="true"
+                  slides-per-view="1"
+                  :speed="1000"
+                  class="latest-product__slider"
+                  ref="review_slide_ref"
+                >
+                  <swiper-slide class="">
+                    <mini-single-product
+                      v-for="product in products.slice(0, 4)"
+                      :key="product.id"
+                      :name="product.name"
+                      :price="product.price"
+                      :bgImg="product.img"
+                    />
+                  </swiper-slide>
+                  <swiper-slide class="">
+                    <mini-single-product
+                      v-for="product in products.slice(4, 8)"
+                      :key="product.id"
+                      :name="product.name"
+                      :price="product.price"
+                      :bgImg="product.img"
+                    />
+                  </swiper-slide>
+                </swiper-container>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- Latest Product Section End -->
+    </section>
+    <!-- Latest Product Section End -->
+  </q-page>
 </template>
 
 <script setup lang="ts">
-
 import HeroCompnent from 'src/components/Buyer/HeroCompnent.vue';
 import ProductCategorySlide from 'src/components/Buyer/Product/ProductCategorySlide.vue';
 import SingleProduct from 'src/components/Buyer/Product/SingleProduct.vue';
 import MiniSingleProduct from 'src/components/Buyer/Product/MiniSingleProduct.vue';
 import { ref } from 'vue';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const latest_slide_ref: any = ref(null)
+const latest_slide_ref: any = ref(null);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const top_slide_ref: any = ref(null)
+const top_slide_ref: any = ref(null);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const review_slide_ref: any = ref(null)
-
+const review_slide_ref: any = ref(null);
 
 let products = ref([
   {
@@ -280,24 +308,24 @@ let products = ref([
   },
 ]);
 
-function latest_slide_next(){
-  latest_slide_ref.value.swiper.slideNext()
+function latest_slide_next() {
+  latest_slide_ref.value.swiper.slideNext();
 }
-function latest_slide_prev(){
-  latest_slide_ref.value.swiper.slidePrev()
-}
-
-function top_slide_next(){
-  top_slide_ref.value.swiper.slideNext()
-}
-function top_slide_prev(){
-  top_slide_ref.value.swiper.slidePrev()
+function latest_slide_prev() {
+  latest_slide_ref.value.swiper.slidePrev();
 }
 
-function review_slide_next(){
-  review_slide_ref.value.swiper.slideNext()
+function top_slide_next() {
+  top_slide_ref.value.swiper.slideNext();
 }
-function review_slide_prev(){
-  review_slide_ref.value.swiper.slidePrev()
+function top_slide_prev() {
+  top_slide_ref.value.swiper.slidePrev();
+}
+
+function review_slide_next() {
+  review_slide_ref.value.swiper.slideNext();
+}
+function review_slide_prev() {
+  review_slide_ref.value.swiper.slidePrev();
 }
 </script>

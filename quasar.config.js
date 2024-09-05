@@ -30,13 +30,6 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: [
       'app.scss',
-      'bootstrap.min.css',
-      'font-awesome.min.css',
-      'elegant-icons.css',
-      'nice-select.css',
-      'jquery-ui.min.css',
-      'owl.carousel.min.css',
-      'slicknav.min.css',
       'style.css'
     ],
 

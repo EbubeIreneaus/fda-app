@@ -2,34 +2,26 @@
 <script setup lang="ts">
 // import { onMounted } from 'vue';
 
-defineProps<{ bgImg: string, name: string, price: number }>();
+defineProps<{ bgImg: string; name: string; price: number }>();
 </script>
 
 <template>
-  <div class="col-lg-3 col-md-4 col-sm-6 mix">
-    <div class="featured__item">
-      <div
-        class="featured__item__pic set-bg"
-        :style="`background-image: url(${bgImg})`"
-      >
-        <ul class="featured__item__pic__hover">
-          <li>
-            <a href="#"><q-icon name="favorite_border"></q-icon></a>
-          </li>
-          <li>
-            <a href="#"><q-icon name="visibility"></q-icon></a>
-          </li>
-          <li>
-            <a href="#"><q-icon name="shopping_cart"></q-icon></a>
-          </li>
-        </ul>
+  <q-card flat class="tw-bg-slate-50">
+    <q-card-section>
+      <q-img :src="bgImg" class="tw-w-full tw-aspect-auto" />
+    </q-card-section>
+    <q-card-section class="tw-text-gray-500">
+      <div class="text-body1 text-weight-bold">{{ name }}</div>
+      <div class="tw-line-clamp-2 tw-text-sm tw-font-medium">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime,
+        reprehenderit.
       </div>
-      <div class="featured__item__text">
-        <h6>
-          <a href="#">{{ name }}</a>
-        </h6>
-        <h5 v-naira="price"></h5>
+    </q-card-section>
+    <q-card-section>
+      <div class="tw-flex tw-items-center tw-justify-between">
+        <div v-naira="price" class="tw-font-mono tw-font-medium"></div>
+        <q-btn icon="add_shopping_cart" unelevated />
       </div>
-    </div>
-  </div>
+    </q-card-section>
+  </q-card>
 </template>

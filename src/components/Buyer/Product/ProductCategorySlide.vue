@@ -2,7 +2,7 @@
 
 <template>
   <!-- Categories Section Begin -->
-  <div class="container">
+  <div class="container tw-mx-auto">
     <swiper-container
       class="categories q-my-xl"
       :slides-per-view="
