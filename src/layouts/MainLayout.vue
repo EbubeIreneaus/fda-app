@@ -117,6 +117,8 @@
         </div>
       </div>
 
+      <HeroCompnent />
+
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" side="left" bordered>
@@ -124,6 +126,7 @@
     </q-drawer>
 
     <q-page-container>
+
       <router-view />
     </q-page-container>
 
@@ -134,6 +137,7 @@
 </template>
 
 <script setup lang="ts">
+import HeroCompnent from 'src/components/Buyer/HeroCompnent.vue';
 import SidebarComp from 'src/components/Buyer/SidebarComp.vue';
 import FooterComp from 'src/components/FooterComp.vue';
 import { ref } from 'vue';

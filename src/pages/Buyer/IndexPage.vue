@@ -10,7 +10,6 @@
 
 <template>
   <q-page class="tw-p-4 lg:tw-p-0">
-    <hero-compnent />
     <div class="hero__item">
       <div class="hero__text">
         <span>FRUIT FRESH</span>
@@ -38,8 +37,10 @@
           <single-product
             :bgImg="product.img"
             :name="product.name"
-            :price="product.price"
+            :s_price="product.suppose_price"
+            :d_price="product.discount_price"
             :class="product.class"
+            :rating="product.rate.rate"
             v-for="product in products"
             :key="product.id"
           />
@@ -237,11 +238,11 @@
 </template>
 
 <script setup lang="ts">
-import HeroCompnent from 'src/components/Buyer/HeroCompnent.vue';
 import ProductCategorySlide from 'src/components/Buyer/Product/ProductCategorySlide.vue';
 import SingleProduct from 'src/components/Buyer/Product/SingleProduct.vue';
 import MiniSingleProduct from 'src/components/Buyer/Product/MiniSingleProduct.vue';
 import { ref } from 'vue';
+import { useProduct } from 'src/stores/product';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const latest_slide_ref: any = ref(null);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -249,64 +250,8 @@ const top_slide_ref: any = ref(null);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const review_slide_ref: any = ref(null);
 
-let products = ref([
-  {
-    id: 1,
-    name: 'water yam',
-    img: 'img/featured/feature-1.jpg',
-    class: 'oranges fastfood vegetables',
-    price: 2000,
-  },
-  {
-    id: 2,
-    name: 'local Rice',
-    img: 'img/featured/feature-2.jpg',
-    class: 'oranges fresh-meat',
-    price: 10100,
-  },
-  {
-    id: 3,
-    name: 'Vegetables',
-    img: 'img/featured/feature-3.jpg',
-    class: 'vegetables fastfood',
-    price: 4300,
-  },
-  {
-    id: 4,
-    name: 'Groundnut',
-    img: 'img/featured/feature-4.jpg',
-    class: 'fastfood oranges',
-    price: 17350,
-  },
-  {
-    id: 5,
-    name: 'Red oil',
-    img: 'img/featured/feature-5.jpg',
-    class: 'fresh-meats, vegetables',
-    price: 1800,
-  },
-  {
-    id: 6,
-    name: 'Rice',
-    img: 'img/featured/feature-6.jpg',
-    class: 'oranges, vegitables',
-    price: 3200,
-  },
-  {
-    id: 7,
-    name: 'Beans',
-    img: 'img/featured/feature-7.jpg',
-    class: 'fresh-meat, fast-foods',
-    price: 10500,
-  },
-  {
-    id: 8,
-    name: 'bush rat',
-    img: 'img/featured/feature-8.jpg',
-    class: 'fresh-meats, fast-foods',
-    price: 12000,
-  },
-]);
+const products = useProduct().products
+
 
 function latest_slide_next() {
   latest_slide_ref.value.swiper.slideNext();
