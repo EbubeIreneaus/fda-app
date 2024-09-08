@@ -33,7 +33,7 @@ defineProps<{
     </q-card-section>
     <q-card-section class="tw-py-1">
       <div class="*:tw-inline-block tw-text-center *:tw-px-1">
-        <div class="tw-text-sm tw-text-black/30">
+        <div class="tw-text-xs tw-text-black/30">
           <del><span v-naira="s_price"></span></del>
         </div>
         <div
