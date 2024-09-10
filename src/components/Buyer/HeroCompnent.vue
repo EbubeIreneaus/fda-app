@@ -1,4 +1,5 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+</script>
 
 <template>
   <section class="container tw-mx-auto tw-mb-5 tw-px-5 tw-pt-4 lg:tw-px-0 lg:tw-pt-0">

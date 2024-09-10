@@ -1,8 +1,10 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 // import { onMounted } from 'vue';
-
+import { useCartStore } from 'src/stores/cart';
+import { computed } from 'vue';
 defineProps<{
+  id: number;
   bgImg: string;
   name: string;
   rating: number;
@@ -10,6 +12,7 @@ defineProps<{
   d_price: number;
 }>();
 
+const cart = computed(() => useCartStore());
 </script>
 
 <template>
@@ -19,9 +22,9 @@ defineProps<{
       <div
         class="tw-absolute tw-w-full tw-left-0 tw-flex tw-justify-center shop-actions"
       >
-        <q-btn icon="add_shopping_cart" unelevated size="sm" />
+        <!-- <q-btn icon="add_shopping_cart" unelevated size="sm" @click="cart.add(id)" /> -->
         <q-btn icon="favorite" unelevated size="sm" />
-        <q-btn icon="visibility" unelevated size="sm" />
+        <q-btn icon="visibility" unelevated size="sm" :to="`/product/${id}`" />
       </div>
     </q-card-section>
     <q-card-section class="tw-text-gray-500 tw-py-1">
@@ -49,7 +52,14 @@ defineProps<{
           readonly
           size="small"
         />
-        <q-btn icon="add_shopping_cart" unelevated size="md" />
+        <q-btn
+          icon="add_shopping_cart"
+          @click="cart.add(id)"
+          unelevated
+          size="md"
+          :text-color="cart.cart.has(id)?'red-5': 'green-5'"
+          :disable="cart.cart.has(id)? true: false"
+        />
       </div>
     </q-card-section>
   </q-card>

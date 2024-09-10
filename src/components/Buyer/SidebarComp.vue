@@ -1,6 +1,11 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script lang="ts" setup>
+import { useCartStore } from 'src/stores/cart';
+import { computed } from 'vue';
 defineProps<{menu: any[]}>()
+
+const cart = computed(() => useCartStore())
+
 </script>
 
 <template>
@@ -28,13 +33,13 @@ defineProps<{menu: any[]}>()
           :ripple="false"
           class="!tw-text-black focus:!tw-bg-transparent"
         >
-          <q-badge label="3" floating class="btn" rounded></q-badge>
+          <q-badge :label="cart.length" floating class="btn" rounded></q-badge>
         </q-btn>
 
         &nbsp;&nbsp;
         <div>
           items:
-          <span v-naira="5000" class="tw-font-mono text-weight-bold"></span>
+          <span v-naira="cart.total_price" class="tw-font-mono text-weight-bold"></span>
         </div>
       </div>
     </div>

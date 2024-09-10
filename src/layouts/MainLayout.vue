@@ -51,7 +51,12 @@
               :key="menu.title"
               class="text-weight-bold spacing"
             >
-              {{ menu.title }}
+              <RouterLink
+                :to="menu.href"
+                exact-active-class="text-grey-6"
+                class="hover:tw-text-gray-500"
+                >{{ menu.title }}</RouterLink
+              >
             </li>
           </ul>
 
@@ -73,13 +78,18 @@
               :ripple="false"
               class="!tw-text-black focus:!tw-bg-transparent"
             >
-              <q-badge label="3" floating class="btn" rounded></q-badge>
+              <q-badge
+                :label="cart.length > 9 ? '9+' : cart.length"
+                floating
+                class="btn"
+                rounded
+              ></q-badge>
             </q-btn>
 
             &nbsp;&nbsp;
             <div>
               items:
-              <span v-naira="5000" class="tw-font-mono text-weight-bold"></span>
+              <span v-naira="Number(cart.total_price)" class="tw-font-mono text-weight-bold"></span>
             </div>
           </div>
 
@@ -107,18 +117,17 @@
           :ripple="false"
           class="!tw-text-black focus:!tw-bg-transparent"
         >
-          <q-badge label="3" floating class="btn" rounded></q-badge>
+          <q-badge :label="cart.length" floating class="btn" rounded></q-badge>
         </q-btn>
 
         &nbsp;&nbsp;
         <div>
           items:
-          <span v-naira="5000" class="tw-font-mono text-weight-bold"></span>
+          <span v-naira="cart.total_price" class="tw-font-mono text-weight-bold"></span>
         </div>
       </div>
 
       <HeroCompnent />
-
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" side="left" bordered>
@@ -126,7 +135,6 @@
     </q-drawer>
 
     <q-page-container>
-
       <router-view />
     </q-page-container>
 
@@ -140,12 +148,14 @@
 import HeroCompnent from 'src/components/Buyer/HeroCompnent.vue';
 import SidebarComp from 'src/components/Buyer/SidebarComp.vue';
 import FooterComp from 'src/components/FooterComp.vue';
-import { ref } from 'vue';
+import { useCartStore } from 'src/stores/cart';
+import { computed, ref} from 'vue';
 
 defineOptions({
   name: 'MainLayout',
 });
 
+const cart = computed(() => useCartStore());
 const MenuLinks = [
   { title: 'HOME', href: '/', icon: '', sublink: [] },
   { title: 'SHOP', href: '/shop', icon: '', sublink: [] },
@@ -158,4 +168,5 @@ const leftDrawerOpen = ref(false);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+
 </script>

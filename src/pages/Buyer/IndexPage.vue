@@ -1,12 +1,57 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
+<script setup lang="ts">
+import ProductCategorySlide from 'src/components/Buyer/Product/ProductCategorySlide.vue';
+import SingleProduct from 'src/components/Buyer/Product/SingleProduct.vue';
+import MiniSingleProduct from 'src/components/Buyer/Product/MiniSingleProduct.vue';
+import { inject, ref } from 'vue';
+// import { useProduct } from 'src/stores/product';
+import { ProductType } from 'app/types/product';
 
-<style scoped>
-.hero__item {
-  background-image: url('/img/hero/banner.jpg');
-  background-position: center;
-  background-size: cover;
+const latest_slide_ref: any = ref(null);
+
+const top_slide_ref: any = ref(null);
+
+const review_slide_ref: any = ref(null);
+const api = inject('api');
+
+const products = ref<ProductType[] | null>(null);
+
+// get product from server
+(async function () {
+  try {
+    const req = await fetch(`${api}/api/product?limit=20`);
+    const res = await req.json();
+    if (res.status != 'success') {
+      console.error('Failed Fetching product from api', res.code);
+      return;
+    }
+    products.value = res.data;
+  } catch (error) {
+    console.error('ErrorFetching product from api', error);
+  }
+})();
+
+function latest_slide_next() {
+  latest_slide_ref.value.swiper.slideNext();
 }
-</style>
+function latest_slide_prev() {
+  latest_slide_ref.value.swiper.slidePrev();
+}
+
+function top_slide_next() {
+  top_slide_ref.value.swiper.slideNext();
+}
+function top_slide_prev() {
+  top_slide_ref.value.swiper.slidePrev();
+}
+
+function review_slide_next() {
+  review_slide_ref.value.swiper.slideNext();
+}
+function review_slide_prev() {
+  review_slide_ref.value.swiper.slidePrev();
+}
+</script>
 
 <template>
   <q-page class="tw-p-4 lg:tw-p-0">
@@ -32,14 +77,15 @@
           </div>
         </div>
         <div
-          class="tw-grid lg:tw-grid-cols-4 sm:tw-grid-cols-2  tw-gap-4 tw-p-3 lg:tw-p-0"
+          class="tw-grid lg:tw-grid-cols-4 sm:tw-grid-cols-2 tw-gap-4 tw-p-3 lg:tw-p-0"
         >
           <single-product
+            :id="product.id"
             :bgImg="product.img"
             :name="product.name"
             :s_price="product.suppose_price"
             :d_price="product.discount_price"
-            :class="product.class"
+            :class="product.category"
             :rating="product.rate.rate"
             v-for="product in products"
             :key="product.id"
@@ -50,7 +96,7 @@
     <!-- Featured Section End -->
 
     <!-- Banner Begin -->
-    <div class="banner ">
+    <div class="banner">
       <div class="container tw-mx-auto">
         <div class="tw-grid md:tw-grid-cols-2 tw-gap-3">
           <div class="col-lg-6 col-md-6 col-sm-6">
@@ -104,7 +150,7 @@
               >
                 <swiper-slide class="">
                   <mini-single-product
-                    v-for="product in products.slice(0, 4)"
+                    v-for="product in products?.slice(0, 4)"
                     :key="product.id"
                     :name="product.name"
                     :price="product.price"
@@ -113,7 +159,7 @@
                 </swiper-slide>
                 <swiper-slide class="">
                   <mini-single-product
-                    v-for="product in products.slice(4, 8)"
+                    v-for="product in products?.slice(4, 8)"
                     :key="product.id"
                     :name="product.name"
                     :price="product.price"
@@ -157,7 +203,7 @@
                 >
                   <swiper-slide class="">
                     <mini-single-product
-                      v-for="product in products.slice(0, 4)"
+                      v-for="product in products?.slice(0, 4)"
                       :key="product.id"
                       :name="product.name"
                       :price="product.price"
@@ -166,7 +212,7 @@
                   </swiper-slide>
                   <swiper-slide class="">
                     <mini-single-product
-                      v-for="product in products.slice(4, 8)"
+                      v-for="product in products?.slice(4, 8)"
                       :key="product.id"
                       :name="product.name"
                       :price="product.price"
@@ -210,7 +256,7 @@
                 >
                   <swiper-slide class="">
                     <mini-single-product
-                      v-for="product in products.slice(0, 4)"
+                      v-for="product in products?.slice(0, 4)"
                       :key="product.id"
                       :name="product.name"
                       :price="product.price"
@@ -219,7 +265,7 @@
                   </swiper-slide>
                   <swiper-slide class="">
                     <mini-single-product
-                      v-for="product in products.slice(4, 8)"
+                      v-for="product in products?.slice(4, 8)"
                       :key="product.id"
                       :name="product.name"
                       :price="product.price"
@@ -237,40 +283,10 @@
   </q-page>
 </template>
 
-<script setup lang="ts">
-import ProductCategorySlide from 'src/components/Buyer/Product/ProductCategorySlide.vue';
-import SingleProduct from 'src/components/Buyer/Product/SingleProduct.vue';
-import MiniSingleProduct from 'src/components/Buyer/Product/MiniSingleProduct.vue';
-import { ref } from 'vue';
-import { useProduct } from 'src/stores/product';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const latest_slide_ref: any = ref(null);
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const top_slide_ref: any = ref(null);
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const review_slide_ref: any = ref(null);
-
-const products = useProduct().products
-
-
-function latest_slide_next() {
-  latest_slide_ref.value.swiper.slideNext();
+<style scoped>
+.hero__item {
+  background-image: url('/img/hero/banner.jpg');
+  background-position: center;
+  background-size: cover;
 }
-function latest_slide_prev() {
-  latest_slide_ref.value.swiper.slidePrev();
-}
-
-function top_slide_next() {
-  top_slide_ref.value.swiper.slideNext();
-}
-function top_slide_prev() {
-  top_slide_ref.value.swiper.slidePrev();
-}
-
-function review_slide_next() {
-  review_slide_ref.value.swiper.slideNext();
-}
-function review_slide_prev() {
-  review_slide_ref.value.swiper.slidePrev();
-}
-</script>
+</style>
