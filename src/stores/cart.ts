@@ -4,11 +4,12 @@
 import { ProductType } from 'app/types/product';
 import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
+import { LocalStorage, Mutation } from 'quasar';
 
 type CartProduct = { no_of_item: number; product: ProductType };
 
 export const useCartStore = defineStore('cart', () => {
-  const cart = ref(new Set());
+  const cart = ref(new Set(LocalStorage.getItem<number[]>('cartIds') || []));
   const length = computed(() => cart.value.size);
   const cart_product = ref<CartProduct[]>([]);
 
@@ -21,9 +22,18 @@ export const useCartStore = defineStore('cart', () => {
 
     for (const cp of cart_product.value) {
       if (cp.product.id == id) {
-        console.log(cp.no_of_item)
-         cp.no_of_item += item_count
-         console.log(cp.no_of_item)
+        console.log(cp.no_of_item);
+        cp.no_of_item += item_count;
+        console.log(cp.no_of_item);
+      }
+    }
+  };
+
+  const remove = (id: number) => {
+    cart.value.delete(id);
+    for (let index = 0; index < cart_product.value.length; index++) {
+      if (cart_product.value[index].product.id == id) {
+        return cart_product.value.splice(index, 1);
       }
     }
   };
@@ -36,10 +46,12 @@ export const useCartStore = defineStore('cart', () => {
       );
       const res = await req.json();
       if (res.status === 'success') {
-        const result = res.data.map((product: ProductType) => {
-          return Object.create({ product: product, no_of_items: 1 });
+        res.data.map((product: ProductType) => {
+          return cart_product.value.push(
+            Object.create({ product: product, no_of_item: 1 })
+          );
         });
-        cart_product.value = result;
+        return true;
       }
 
       console.error('Error Geting cart product', res.code);
@@ -57,7 +69,7 @@ export const useCartStore = defineStore('cart', () => {
       const res = await req.json();
       if (res.status === 'success') {
         cart_product.value.push(
-          Object.create({ product: res.data[0], no_of_item: item_count})
+          Object.create({ product: res.data[0], no_of_item: item_count })
         );
         return true;
       }
@@ -85,9 +97,13 @@ export const useCartStore = defineStore('cart', () => {
     length,
     add,
     total_price,
+    cart_product,
+    remove
   };
 });
-
+useCartStore().$subscribe((Mutation, cart) => {
+  LocalStorage.setItem('cartIds', [...cart.cart]);
+});
 // watch(
 //   () => useCartStore().length,
 //   (x) => {

@@ -5,6 +5,7 @@ import BreadCrumbs from 'src/components/Buyer/BreadCrumbs.vue';
 import SingleProduct from 'src/components/Buyer/Product/SingleProduct.vue';
 import ShopSidebar from 'src/components/Buyer/ShopSidebar.vue';
 import { useProduct } from 'src/stores/product';
+import { vAutoAnimate } from '@formkit/auto-animate';
 // const shop = useProduct().shop
 import { computed, inject, ref, watch } from 'vue';
 
@@ -116,8 +117,9 @@ watch(sort_by, (sort) => {
           <div
             v-if="products"
             class="tw-grid lg:tw-grid-cols-4 md:tw-grid-cols-3 sm:tw-grid-cols-2 tw-grid-cols-1 tw-gap-x-3 tw-gap-y-4"
+            v-auto-animate
           >
-            <div v-for="product in products" :key="product.id" class="">
+            <div v-for="product in products" :key="product.id" class="" >
               <SingleProduct
                 :id="product.id"
                 :name="product?.name"

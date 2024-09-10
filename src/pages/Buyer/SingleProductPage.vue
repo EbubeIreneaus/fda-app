@@ -124,7 +124,7 @@ const carting = ref(1);
                     @click="
                       () =>
                         cart.cart.has(product.id)
-                          ? ''
+                          ? cart.remove(product.id)
                           : cart.add(product.id, carting)
                     "
                   />

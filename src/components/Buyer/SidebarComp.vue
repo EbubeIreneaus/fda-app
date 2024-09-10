@@ -15,7 +15,7 @@ const cart = computed(() => useCartStore())
     </div>
 
     <div class="tw-my-7">
-      <div class="*:tw-inline tw-my-1">
+      <div class="*:tw-inline-block tw-my-1">
         <q-btn
           icon="favorite"
           flat
@@ -23,7 +23,7 @@ const cart = computed(() => useCartStore())
           :ripple="false"
           class="!tw-text-black focus:!tw-bg-transparent"
         >
-          <q-badge label="2" class="btn" floating rounded></q-badge>
+          <q-badge label="0" class="btn" floating rounded></q-badge>
         </q-btn>
 
         <q-btn
@@ -32,6 +32,7 @@ const cart = computed(() => useCartStore())
           size="sm"
           :ripple="false"
           class="!tw-text-black focus:!tw-bg-transparent"
+          to="/cart"
         >
           <q-badge :label="cart.length" floating class="btn" rounded></q-badge>
         </q-btn>

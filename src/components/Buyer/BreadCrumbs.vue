@@ -8,7 +8,7 @@ defineProps<{ title: string; navs: string[] }>();
   >
     <div class="tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center">
       <div>
-        <div class="text-h4 text-weight-bolder text-white tw-uppercase">
+        <div class="text-h4 text-weight-bolder text-white tw-uppercase text-center">
           {{ title }}
         </div>
         <div>

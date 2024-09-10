@@ -60,7 +60,7 @@
             </li>
           </ul>
 
-          <div class="*:tw-inline tw-hidden lg:tw-block">
+          <div class="*:tw-inline-block tw-hidden lg:tw-block">
             <q-btn
               icon="favorite"
               flat
@@ -77,6 +77,7 @@
               size="sm"
               :ripple="false"
               class="!tw-text-black focus:!tw-bg-transparent"
+              to="/cart"
             >
               <q-badge
                 :label="cart.length > 9 ? '9+' : cart.length"
@@ -99,7 +100,7 @@
         </div>
       </nav>
 
-      <div class="*:tw-inline tw-my-1 tw-text-center lg:tw-hidden">
+      <div class="*:tw-inline-block tw-my-1 tw-text-center lg:tw-hidden">
         <q-btn
           icon="favorite"
           flat
@@ -107,7 +108,7 @@
           :ripple="false"
           class="!tw-text-black focus:!tw-bg-transparent"
         >
-          <q-badge label="2" class="btn" floating rounded></q-badge>
+          <q-badge label="0" class="btn" floating rounded></q-badge>
         </q-btn>
 
         <q-btn
@@ -116,6 +117,7 @@
           size="sm"
           :ripple="false"
           class="!tw-text-black focus:!tw-bg-transparent"
+          to="/cart"
         >
           <q-badge :label="cart.length" floating class="btn" rounded></q-badge>
         </q-btn>
