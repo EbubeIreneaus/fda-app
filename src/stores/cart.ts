@@ -3,12 +3,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ProductType } from 'app/types/product';
 import { defineStore } from 'pinia';
-import { computed, ref, watch } from 'vue';
+import { computed,  ref, watch } from 'vue';
 import { LocalStorage, Mutation } from 'quasar';
 
 type CartProduct = { no_of_item: number; product: ProductType };
-
+const api = process.env.DEV ? 'http://127.0.0.1:8000' : 'https://api-therawmarket.vercel.app'
 export const useCartStore = defineStore('cart', () => {
+
   const cart = ref(new Set(LocalStorage.getItem<number[]>('cartIds') || []));
   const length = computed(() => cart.value.size);
   const cart_product = ref<CartProduct[]>([]);
@@ -42,7 +43,7 @@ export const useCartStore = defineStore('cart', () => {
     try {
       const params = [...cart.value];
       const req = await fetch(
-        `http://127.0.0.1:8000/api/cart_product?cart_ids=${params}`
+        `${api}/api/cart_product?cart_ids=${params}`
       );
       const res = await req.json();
       if (res.status === 'success') {
@@ -64,7 +65,7 @@ export const useCartStore = defineStore('cart', () => {
   async function get_latest_cart_product(id: number, item_count = 1) {
     try {
       const req = await fetch(
-        `http://127.0.0.1:8000/api/cart_product?cart_ids=${id}`
+        `${api}/api/cart_product?cart_ids=${id}`
       );
       const res = await req.json();
       if (res.status === 'success') {

@@ -6,7 +6,7 @@
     <swiper-container
       class="categories q-my-xl"
       :slides-per-view="
-        $q.screen.lg ? 5 : $q.screen.md ? 4 : $q.screen.sm ? 2 : 1
+        $q.screen.gt.lg ? 6 : $q.screen.gt.md ? 5 : $q.screen.gt.sm ? 4 : $q.screen.gt.xs?3 : 1
       "
       speed="500"
       :loop="true"
@@ -54,6 +54,31 @@
           <h5><a href="#">drink fruits</a></h5>
         </div>
       </swiper-slide>
+      <swiper-slide>
+        <div
+          class="categories__item set-bg"
+          style="background-image: url('img/categories/cat-5.jpg')"
+        >
+          <h5><a href="#">Vegitables</a></h5>
+        </div>
+      </swiper-slide>
+      <swiper-slide class="">
+        <div
+          class="categories__item set-bg"
+          style="background-image: url('img/categories/cat-1.jpg')"
+        >
+          <h5><a href="#">Rice Grain</a></h5>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div
+          class="categories__item set-bg"
+          style="background-image: url('img/categories/cat-2.jpg')"
+        >
+          <h5><a href="#">Livestock</a></h5>
+        </div>
+      </swiper-slide>
+
     </swiper-container>
   </div>
   <!-- Categories Section End -->
