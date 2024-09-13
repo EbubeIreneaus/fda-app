@@ -40,7 +40,7 @@ const cart = computed(() => useCartStore())
         &nbsp;&nbsp;
         <div>
           items:
-          <span v-naira="cart.total_price" class="tw-font-mono text-weight-bold"></span>
+          <span v-naira="cart.total_price" class="text-weight-bold"></span>
         </div>
       </div>
     </div>
