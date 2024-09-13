@@ -2,14 +2,13 @@
 <script lang="ts" setup>
 import { useCartStore } from 'src/stores/cart';
 import { computed } from 'vue';
-defineProps<{menu: any[]}>()
+defineProps<{ menu: any[] }>();
 
-const cart = computed(() => useCartStore())
-
+const cart = computed(() => useCartStore());
 </script>
 
 <template>
-  <div class="tw-my-12 tw-mx-5 ">
+  <div class="tw-my-12 tw-mx-5">
     <div class="tw-w-28">
       <q-img src="img/logo.png" />
     </div>
@@ -47,7 +46,14 @@ const cart = computed(() => useCartStore())
 
     <div class="tw-mb-5">
       <q-list separator>
-        <q-item :to="link.href" v-for="link in menu" :key="link.title" class="tw-my-0.5 text-weight-bold">
+        <q-item
+          :to="link.href"
+          v-for="link in menu"
+          :key="link.title"
+          class="tw-my-0.5 text-weight-bold"
+          exact-active-class="text-grey-6"
+          active-class=""
+        >
           <q-item-section>{{ link.title }}</q-item-section>
         </q-item>
       </q-list>
@@ -61,8 +67,10 @@ const cart = computed(() => useCartStore())
     </div>
 
     <div class="tw-px-3 tw-font-medium tw-text-gray-500/ tw-mb-4">
-      <div class="tw-mb-3"><q-icon name="mail" />&nbsp; care@therawmarket.com</div>
-      <div><q-icon name="phone" />&nbsp;  +234 806 198 2520</div>
+      <div class="tw-mb-3">
+        <q-icon name="mail" />&nbsp; care@therawmarket.com
+      </div>
+      <div><q-icon name="phone" />&nbsp; +234 806 198 2520</div>
     </div>
 
     <div>Free shipping for goods above <span v-naira="25000"></span></div>
