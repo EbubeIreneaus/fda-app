@@ -3,7 +3,7 @@ defineProps<{ bgImg: string, name: string, price: number, id: number }>();
 </script>
 
 <template>
-  <router-link :to="`/shop/${id}`" class="q-pa-sm text-black ">
+  <router-link :to="`/product/${id}`" class="q-pa-sm text-black ">
       <q-img :src="bgImg" alt="" style="height: 100px; width: 100px"  />
     <div class="ctx">
       <h6>{{ name }}</h6>
