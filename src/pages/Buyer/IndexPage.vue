@@ -155,6 +155,7 @@ function review_slide_prev() {
                     :name="product.name"
                     :price="product.price"
                     :bgImg="product.img"
+                    :id="product.id"
                   />
                 </swiper-slide>
                 <swiper-slide class="">
@@ -164,6 +165,7 @@ function review_slide_prev() {
                     :name="product.name"
                     :price="product.price"
                     :bgImg="product.img"
+                    :id="product.id"
                   />
                 </swiper-slide>
               </swiper-container>
@@ -208,6 +210,7 @@ function review_slide_prev() {
                       :name="product.name"
                       :price="product.price"
                       :bgImg="product.img"
+                      :id="product.id"
                     />
                   </swiper-slide>
                   <swiper-slide class="">
@@ -217,6 +220,7 @@ function review_slide_prev() {
                       :name="product.name"
                       :price="product.price"
                       :bgImg="product.img"
+                      :id="product.id"
                     />
                   </swiper-slide>
                 </swiper-container>
@@ -261,6 +265,7 @@ function review_slide_prev() {
                       :name="product.name"
                       :price="product.price"
                       :bgImg="product.img"
+                      :id="product.id"
                     />
                   </swiper-slide>
                   <swiper-slide class="">
@@ -270,6 +275,7 @@ function review_slide_prev() {
                       :name="product.name"
                       :price="product.price"
                       :bgImg="product.img"
+                      :id="product.id"
                     />
                   </swiper-slide>
                 </swiper-container>
