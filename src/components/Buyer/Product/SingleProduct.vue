@@ -39,10 +39,9 @@ const cart = computed(() => useCartStore());
         <div class="tw-text-xs tw-text-black/30">
           <del><span v-naira="s_price"></span></del>
         </div>
-        <div
-          v-naira="d_price"
-          class="tw-font-mono tw-font-semibold text-body1"
-        ></div>
+        <div class=" tw-font-semibold text-body1">
+          <span v-naira="d_price"></span>
+        </div>
       </div>
       <div class="tw-flex tw-items-center tw-justify-between">
         <q-rating
@@ -57,8 +56,8 @@ const cart = computed(() => useCartStore());
           @click="cart.add(id)"
           unelevated
           size="md"
-          :text-color="cart.cart.has(id)?'red-5': 'green-5'"
-          :disable="cart.cart.has(id)? true: false"
+          :text-color="cart.cart.has(id) ? 'red-5' : 'green-5'"
+          :disable="cart.cart.has(id) ? true : false"
         />
       </div>
     </q-card-section>
